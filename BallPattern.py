@@ -1,6 +1,6 @@
 from PIL import Image 
 
-pathBackground = "/home/nima/Desktop/2019-12-01_12-16/2111.jpg"
+pathBackground = "/home/nima/Desktop/2019-12-01_12-16/211.jpg"
 pathBallPattern = "/home/nima/Desktop/pngguru.png"
 pathFinal = "/home/nima/Desktop/result60.jpg"
 
@@ -14,8 +14,6 @@ def readTxt(path):
     with open(path) as fp:
         data = [list(map(int, line.strip().split(' '))) for line in fp]
         return data
-
-# def calculation():
 
 
 def paste(background, transparent, coorX, coorY, ballSizeX, ballSizeY, saveDir):
@@ -34,10 +32,7 @@ def paste(background, transparent, coorX, coorY, ballSizeX, ballSizeY, saveDir):
     # print(readTxt(changeJpgToTxt(pathBackground)))
 
 pos = readTxt(changeJpgToTxt(pathBackground))
-# print(pos)
-
-for x in pos:
-    print(x)
 
 paste(pathBackground, pathBallPattern, (pos[0][1] - ((pos[0][3])/2)), (pos[0][2] - ((pos[0][4])/2)), pos[0][3], pos[0][4], pathFinal)
-paste(pathBackground, pathFinal, (pos[0][1] - ((pos[0][3])/2)), (pos[0][2] - ((pos[0][4])/2)), pos[0][3], pos[0][4], "/home/nima/Desktop/result60.jpg")
+if len(pos) <= 2:
+    paste(pathFinal, pathBallPattern, (pos[0][1] - ((pos[0][3])/2)), (pos[0][2] - ((pos[0][4])/2)), pos[0][3], pos[0][4], pathFinal)
