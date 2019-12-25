@@ -1,8 +1,9 @@
 from PIL import Image 
+import glob
 
-pathBackground = "/home/nima/Desktop/2019-12-01_12-16/200.jpg"
-pathBallPattern = "/home/nima/Desktop/ballPattern/patterns/hiclipart.com.png"
-pathFinal = "/home/nima/Desktop/result60.jpg"
+# pathBackground = "/home/nima/Desktop/2019-12-01_12-16/200.jpg"
+pathBallPattern = "/home/nima/Desktop/ballPattern/patterns/trzcacak.rs-soccer-ball-png-2469190.png"
+pathFinal = "/home/nima/Desktop/result/"
 
 
 def changeJpgToTxt(path):
@@ -28,11 +29,18 @@ def paste(background, transparent, coorX, coorY, ballSizeX, ballSizeY, saveDir):
     Image1copy.paste(Image2, (coorX- (ballSizeX*int(0.1)), coorY-(ballSizeY*int(0.1))), Image2.convert('RGBA'))
 
     Image1copy.save(saveDir, 'JPEG', quality=100) 
-    # print(changeJpgToTxt(pathBackground))
-    # print(readTxt(changeJpgToTxt(pathBackground)))
 
+# pos = readTxt(changeJpgToTxt(pathBackground))
+
+allImages = (glob.glob("/home/nima/Desktop/2019-12-01_12-16/*.jpg"))
 pos = readTxt(changeJpgToTxt(pathBackground))
-print(pos)
-paste(pathBackground, pathBallPattern, (pos[0][1] - ((pos[0][3])/2)), (pos[0][2] - ((pos[0][4])/2)), pos[0][3], pos[0][4], pathFinal)
-if len(pos) >= 2:
-    paste(pathFinal, pathBallPattern, (pos[1][1] - ((pos[1][3])/2)), (pos[1][2] - ((pos[1][4])/2)), pos[1][3], pos[1][4], pathFinal)
+
+counter = 0
+
+for image in allImages:
+    print(image)
+    pos = readTxt(changeJpgToTxt(image))
+    paste(image, pathBallPattern, (pos[0][1] - ((pos[0][3])/2)), (pos[0][2] - ((pos[0][4])/2)), pos[0][3], pos[0][4], pathFinal + str(counter))
+    if len(pos) >= 2:
+        paste(pathFinal + str(counter), pathBallPattern, (pos[1][1] - ((pos[1][3])/2)), (pos[1][2] - ((pos[1][4])/2)), pos[1][3], pos[1][4], pathFinal + str(counter))
+    counter += 1 
