@@ -33,7 +33,7 @@ def paste(background, transparent, coorX, coorY, ballSizeX, ballSizeY, saveDir):
 # pos = readTxt(changeJpgToTxt(pathBackground))
 
 allImages = (glob.glob("/home/nima/Desktop/2019-12-01_12-16/*.jpg"))
-pos = readTxt(changeJpgToTxt(pathBackground))
+# pos = readTxt(changeJpgToTxt(pathBackground))
 
 counter = 0
 
