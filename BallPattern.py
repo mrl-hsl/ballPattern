@@ -1,8 +1,7 @@
 from PIL import Image 
 import glob
 
-# pathBackground = "/home/nima/Desktop/2019-12-01_12-16/200.jpg"
-pathBallPattern = "/home/nima/Desktop/ballPattern/patterns/trzcacak.rs-soccer-ball-png-2469190.png"
+pathBallPattern = "/home/nima/Desktop/ballPattern/patterns/trzcacak.rs-nike-soccer-ball-png-1369541.png"
 pathFinal = "/home/nima/Desktop/result/"
 
 
@@ -30,10 +29,7 @@ def paste(background, transparent, coorX, coorY, ballSizeX, ballSizeY, saveDir):
 
     Image1copy.save(saveDir, 'JPEG', quality=100) 
 
-# pos = readTxt(changeJpgToTxt(pathBackground))
-
 allImages = (glob.glob("/home/nima/Desktop/2019-12-01_12-16/*.jpg"))
-# pos = readTxt(changeJpgToTxt(pathBackground))
 
 counter = 0
 
